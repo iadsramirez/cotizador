@@ -1,0 +1,200 @@
+<div class="container">
+<div class="row">
+<div class="col-md-8">
+<h1>Clientes</h1>
+</div>
+<div class="col-md-4">
+<button type="button" class="btn btn-info">
+    Agregar
+</button>
+</div>
+</div>
+
+<div class="row">
+ <div class="col-md-12">
+<div class="row">
+<div class="col-md-12">
+<div class="col-md-3">
+<label style="font-weight: bold;">Buscar</label>
+</div>
+<div class="col-md-9">
+    <input type="text" class="form-control"  placeholder="Ingrese la palabra">
+</div>
+</div>
+</div>
+ </div>   
+<div class="col-md-12 my-2">
+
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID CLIENTE</th>
+            <th>NOMBRE CLIENTE</th>
+            <th>CI/RUC</th>
+            <th>ESTADOS</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listaClientes">
+              <td>
+                  {{item.id}}
+              </td>
+              <td>
+                {{item.nombre}}
+            </td>
+            <td>
+                {{item.ci}}
+            </td>
+        
+            <td>
+                {{item.estado}}
+            </td>
+            <td>
+                <button class="btn btn-danger" title="EDICION" data-toggle="modal" data-target=".bd-example-modal-xl">
+                    <i class="fa fa-address-card" aria-hidden="true"></i>
+                </button>
+            </td>
+            <td>
+                <button class="btn btn-danger" data-toggle="modal" data-target=".bd-example-modal-sm" title="ELIMINAR">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!---modales-->
+
+
+<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+       
+<!--CUERPO MODAL-->
+
+<div class="card text-black mb-3" style="max-width: 1000px;">
+    <div class="card-header text-white bg-danger">GESTION DE TERCEROS CLIENTES</div>
+    <div class="card-body">
+    
+        <div class="form-row my-2">
+            <div class="col-md-4">
+                <label for="inputEmail">Id cliente</label> <br>
+                <label for="inputEmail">709590</label>
+            </div>
+            <div class="col-md-4">
+                <label for="inputEmail">Razón Social</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <label for="inputEmail">Tipo documento</label>
+                <select class="form-control" >
+                    <option *ngFor="let doc of lstDocs" 
+                    [value]="doc.codigo">{{doc.valor}}</option>
+                  </select>
+            </div>
+        </div>
+
+        <div class="form-row my-2">
+            <div class="col-md-4">
+                <label for="inputEmail">Documento</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <label for="inputEmail">Dirección</label>
+                <textarea class="form-control" rows="4" id="comment"></textarea>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputEmail">Telefono</label>
+                <input type="text" class="form-control">
+            </div>
+
+        </div>
+        <div class="form-row my-2">
+            <div class="col-md-4">
+                <label for="inputEmail">Celular</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <label for="inputEmail">Correo</label>
+                <input type="text" class="form-control">
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputEmail">Correos Adicionales (separar por ;)</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="form-row my-2">
+            <div class="col-md-4">
+                <label for="inputEmail">Tipo Cliente</label>
+                <select class="form-control" >
+                    <option *ngFor="let doc of listaTpCliente" 
+                    [value]="doc.codigo">{{doc.valor}}</option>
+                  </select>
+            </div> 
+            <div class="col-md-4">
+                <label for="inputEmail">Estado</label>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="radio" class="form-check-input" name="optradio">ACTIVO
+                    </label>
+                  </div>
+
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="radio" class="form-check-input" name="optradio">INACTIVO
+                    </label>
+                  </div>
+                  
+            </div>  
+
+            <div class="col-md-4 my-4">
+                <button type="button" class="btn btn-danger">GUARDAR</button>
+            </div>
+        </div>
+
+  <!--FIN </form> MODAL-->    
+    </div>
+  </div>
+
+
+<!--FIN CUERPO MODAL-->
+      </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="col-md-12">
+            <div class="card card-outline-primary mb-3 text-center">
+              
+              <h3 class="card-title">CONFIRMACION</h3>
+              <p class="card-text">¿Esta seguro? Se eliminara toda la informacion relacionada</p>
+              <a href="#" class="btn btn-primary text-white">SI</a>
+              <a href="#" class="btn btn-primary text-white">NO</a>
+           
+          </div>
+          </div>
+      </div>
+    </div>
+  </div>
