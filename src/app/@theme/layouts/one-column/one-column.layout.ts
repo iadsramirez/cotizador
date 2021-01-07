@@ -6,7 +6,7 @@ import { LoginsService } from 'app/pages/servicios/logins.service';
   styleUrls: ['./one-column.layout.scss'],
   template: `
     <nb-layout windowMode  >
-      <nb-layout-header fixed style='background-color: rgb(249, 39, 88); ' >
+      <nb-layout-header fixed style='background-color: rgb(22, 0, 129); ' >
         <ngx-header></ngx-header>
       </nb-layout-header>
 
