@@ -1,121 +1,149 @@
+<div class="steppers-container row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header style="background-color: #1A0F73;">
+        <strong>
+           <h6 style="color: white;">COTIZACION</h6>
+        </strong>
+     </nb-card-header>
 
-
-
-
-
-<div class="container">
+     <nb-card-body>
+      <div class="container">
   
   
-  <div class="alert" style="background-color: black;">
-   <h1 style="color: white;text-align: center;"><strong>COTIZACION</strong></h1><br>
-   <h3 style="color: red;text-align: center;"><strong>N-23245545</strong></h3> 
-  </div>
-  
-  <form [formGroup]="stepProductoForm" (ngSubmit)="onSubmit()">
-   
-    <table class="table table-bordered table-hover" formArrayName="quantities">
-      <tr>
-        <th colspan="10" style="color: aliceblue;background-color: black;">Detalle Cotizacion:</th>
-        <th width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary">Agregar</button></th>
-      </tr>
-      <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
-      <td>
-          <label class="my-2">COD :</label>
-          <input type="text" formControlName="codigo" class="form-control" readonly>
-      </td>
-    <td>
-        <label class="my-2">Cantidad :</label>
-        <input type="text" formControlName="cantidad" class="form-control">
-    </td>
-      <td>
-        <label class="my-2">Descripcion:</label>
-        <select formControlName="prod" class="form-control" (change)="probar($event.target.value,i)">
-          <option *ngFor="let order of lista" [value]="order.codigo">
-            {{order.nombre}}
-          </option>
-        </select>
-
-      </td>
-    <td>
-        <label class="my-2">Ubic:</label>
-        <input type="text"  formControlName="ubic" class="form-control">
-    </td>
-    <td>
-    <label class="my-2">Ancho:</label>
-      <input type="text"  formControlName="ancho" class="form-control">
-  </td>
-  <td>
-     <label class="my-2">Alto:</label>
-    <input type="text"  formControlName="alto" class="form-control">
-</td>
-<td>
-  Valor Unit.:
-  <input type="text"  formControlName="precio" class="form-control">
-</td>
-<td>
-  Dcto Especial:
-  <input type="text"  formControlName="descEsp" class="form-control">
-</td>
-<td>
-  <label class="my-2">Descuento:</label>
-  <input type="text"  formControlName="descuento" class="form-control">
-</td>
-
-<td>
-  <label class="my-2">Total:</label>
-  <input type="text"  formControlName="total" class="form-control">
-</td>
-        <td>
-            <button (click)="removeQuantity(i)" class="btn btn-danger">Eliminar</button>
+        <div class="alert" style="background-color: black;">
+         <h1 style="color: white;text-align: center;"><strong>COTIZACION</strong></h1><br>
+         <h3 style="color: red;text-align: center;"><strong>N-23245545</strong></h3> 
+        </div>
+        
+        <form [formGroup]="stepProductoForm" (ngSubmit)="onSubmit()">
+         
+          <table class="table table-bordered table-hover" formArrayName="quantities">
+            <tr>
+              <th colspan="10" style="color: aliceblue;background-color: black;">Detalle Cotizacion:</th>
+              <th width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary">Agregar</button></th>
+            </tr>
+            <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
+            <td>
+                <label class="my-2">COD :</label>
+                <input type="text" formControlName="codigo" class="form-control" readonly>
+            </td>
+          <td>
+              <label class="my-2">Cantidad :</label>
+              <input type="text" formControlName="cantidad" class="form-control">
+          </td>
+            <td>
+              <label class="my-2">Descripcion:</label>
+              <select formControlName="prod" class="form-control" (change)="probar($event.target.value,i)">
+                <option *ngFor="let order of lista" [value]="order.codigo">
+                  {{order.nombre}}
+                </option>
+              </select>
+      
+            </td>
+          <td>
+              <label class="my-2">Ubic:</label>
+              <input type="text"  formControlName="ubic" class="form-control">
+          </td>
+          <td>
+          <label class="my-2">Ancho:</label>
+            <input type="text"  formControlName="ancho" class="form-control">
         </td>
-      </tr>
-    </table>
-   
-    <button type="submit" class="btn btn-success">Confirmar</button>
-    
-  </form>
-    
-  <br/>
- <div *ngIf="false">
-  {{this.stepProductoForm.value | json}}
- </div>
-</div>
-
-<div class="container">
-<div class="row">
-<div class="col-md-8">
-  <div class="alert alert-success">
-   <h5><strong>Termino y condiciones</strong></h5>  
+        <td>
+           <label class="my-2">Alto:</label>
+          <input type="text"  formControlName="alto" class="form-control">
+      </td>
+      <td>
+        Valor Unit.:
+        <input type="text"  formControlName="precio" class="form-control">
+      </td>
+      <td>
+        Dcto Especial:
+        <input type="text"  formControlName="descEsp" class="form-control">
+      </td>
+      <td>
+        <label class="my-2">Descuento:</label>
+        <input type="text"  formControlName="descuento" class="form-control">
+      </td>
+      
+      <td>
+        <label class="my-2">Total:</label>
+        <input type="text"  formControlName="total" class="form-control">
+      </td>
+              <td>
+                  <button (click)="removeQuantity(i)" class="btn btn-danger">Eliminar</button>
+              </td>
+            </tr>
+          </table>
+         
+          <button type="submit" class="btn btn-success">Confirmar</button>
+          
+        </form>
+          
+        <br/>
+       <div *ngIf="false">
+        {{this.stepProductoForm.value | json}}
+       </div>
+      </div>
+      
+      <div class="container">
+      <div class="row">
+      <div class="col-md-8">
+        <div class="alert alert-success">
+         <h5><strong>Termino y condiciones</strong></h5>  
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+        <div class="alert row" style="background-color: red;color: white;border-radius: 10px;">
+          <h6 style="color: white"><strong>Total Descuento</strong>0.00</h6>  
+         </div>
+         <div class="alert row" style="background-color:blue;color: white;border-radius: 10px;">
+          <h6 style="color: white"><strong>Sub. Tarjeta</strong>0.00</h6>  
+          <h6 style="color: white"><strong>IVA</strong>0.00</h6>
+          <h6 style="color: white"><strong>Total Tarjeta Credito</strong>0.00</h6>    
+         </div>
+         <div class="alert row" style="background-color:darkblue;color: white;border-radius: 10px;">
+          <h6 style="color: white"><strong>Sub. Transferencia</strong>0.00</h6>  
+          <h6 style="color: white"><strong>IVA</strong>0.00</h6>
+          <h6 style="color: white"><strong>Total Transferencia:</strong>0.00</h6>    
+         </div>
+      </div>
+      <div class="col-md-8">
+      </div>
+      <div class="col-md-4">
+        <div class="alert row" style="border-radius: 10px;">
+          <h6 style="color: blue;"><strong>Pagando con Transferencia o Efectivo</strong></h6> <br>
+          <h6 style="color: red;"><strong>AHORRAS 0.000</strong></h6>    
+          <small style="color: blue;"><strong>Total Descuento:</strong>0.00</small> <br>    
+         </div>
+      </div>
+      
+      </div>
+      </div>
+     </nb-card-body>
+    </nb-card>
   </div>
 </div>
 
-<div class="col-md-4">
-  <div class="alert row" style="background-color: red;color: white;border-radius: 10px;">
-    <h6 style="color: white"><strong>Total Descuento</strong>0.00</h6>  
-   </div>
-   <div class="alert row" style="background-color:blue;color: white;border-radius: 10px;">
-    <h6 style="color: white"><strong>Sub. Tarjeta</strong>0.00</h6>  
-    <h6 style="color: white"><strong>IVA</strong>0.00</h6>
-    <h6 style="color: white"><strong>Total Tarjeta Credito</strong>0.00</h6>    
-   </div>
-   <div class="alert row" style="background-color:darkblue;color: white;border-radius: 10px;">
-    <h6 style="color: white"><strong>Sub. Transferencia</strong>0.00</h6>  
-    <h6 style="color: white"><strong>IVA</strong>0.00</h6>
-    <h6 style="color: white"><strong>Total Transferencia:</strong>0.00</h6>    
-   </div>
-</div>
-<div class="col-md-8">
-</div>
-<div class="col-md-4">
-  <div class="alert row" style="border-radius: 10px;">
-    <h6 style="color: blue;"><strong>Pagando con Transferencia o Efectivo</strong></h6> <br>
-    <h6 style="color: red;"><strong>AHORRAS 0.000</strong></h6>    
-    <small style="color: blue;"><strong>Total Descuento:</strong>0.00</small> <br>    
-   </div>
-</div>
 
-</div>
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

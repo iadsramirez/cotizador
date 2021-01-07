@@ -14,8 +14,24 @@ import { ClienteComponent } from './cliente/cliente.component';
 import { ProveedorComponent } from './proveedor/proveedor.component';
 import { ProductoComponent } from './producto/producto.component';
 
+import {
+  NbButtonModule,
+  NbCardModule,
+  NbProgressBarModule,
+  NbTabsetModule,
+  NbUserModule,
+  NbIconModule,
+  NbSelectModule,
+  NbAccordionModule,
+  NbListModule,
+  NbRouteTabsetModule,
+  NbStepperModule,
+  NbRadioModule
+} from '@nebular/theme';
+
+
 @NgModule({
-  imports: [ReactiveFormsModule,
+  imports: [NbCardModule,ReactiveFormsModule,
     PagesRoutingModule,
     ThemeModule,
     NbMenuModule,

@@ -1,6 +1,14 @@
 import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
+  
+  {
+    title: 'Cotizacion',
+    icon: 'shopping-cart-outline',
+    link: '/pages/cotizacion',
+    home: true,
+  },
+  
   {
     title: 'Clientes',
     icon: 'shopping-cart-outline',

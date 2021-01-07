@@ -1,86 +1,129 @@
-<div class="container">
-    <div class="row">
-    <div class="col-md-8">
-    <h1>Proveedores</h1>
-    </div>
-    <div class="col-md-4">
-    <button type="button" class="btn btn-info">
-        AGREGAR
-    </button>
-    <button type="button" class="btn btn-primary">
-        IMPRIMIR
-    </button>
-    </div>
-    </div>
-    
-    <div class="row">
-     <div class="col-md-12">
-    <div class="row">
+<div class="steppers-container row">
     <div class="col-md-12">
-    <div class="col-md-3">
-    <label style="font-weight: bold;">Buscar</label>
-    </div>
-    <div class="col-md-9">
-        <input type="text" class="form-control"  placeholder="Ingrese la palabra">
-    </div>
-    </div>
-    </div>
-     </div>   
-    <div class="col-md-12 my-2">
-    
-        <table class="table table-bordered table-hover">
-            <thead class="thead-dark">
-              <tr>
-                <th>COD CIA</th>
-                <th>ID PROVEEDOR</th>
-                <th>NOMBRE PROVEEDOR</th>
-                <th>CI/RUC</th>
-                <th>ESTADO</th>
-                <th></th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of listaClientes">
-                  <td>
-                      {{item.cia}}
-                  </td>
-                  <td>
-                    {{item.id}}
-                </td>
-                <td>
-                    {{item.nombre}}
-                </td>
+        <nb-card>
             
-                <td>
-                    {{item.ci}}
-                </td>
-                <td>
-                    {{item.estado}}
-                </td>
-                <td>
-                    <button class="btn btn-danger" title="EDICION" data-toggle="modal" data-target=".bd-example-modal-xl">
-                        <i class="fa fa-address-card" aria-hidden="true"></i>
+            <nb-card-header style="background-color: #1A0F73;">
+                <strong>
+                   <h6 style="color: white;">Proveedor</h6>
+                </strong>
+             </nb-card-header>
+             <nb-card-body>
+
+                <div class="container">
+                    <div class="row">
+                
+                    <div class="col-md-4">
+                    <button type="button" class="btn btn-info btn-block btn-sm">
+                        AGREGAR
                     </button>
-                </td>
-                <td>
-                    <button class="btn btn-danger" data-toggle="modal" data-target=".bd-example-modal-sm" title="ELIMINAR">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    <button type="button" class="btn btn-primary btn-block btn-sm">
+                        IMPRIMIR
                     </button>
-                </td>
-    
-              </tr>
-            </tbody>
-          </table>
-    
+                    </div>
+                    </div>
+                    
+                    <div class="row my-2">
+                    <div class="col-md-12">
+                        <div class="row">
+                    
+                        <div class="col-md-9">
+                            <input type="text" class="form-control"  placeholder="Ingrese la palabra a buscar">
+                        </div>
+                        
+                        </div>
+                    </div>   
+                    <div class="col-md-12 my-2">
+                    
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th>COD CIA</th>
+                                <th>ID PROVEEDOR</th>
+                                <th>NOMBRE PROVEEDOR</th>
+                                <th>CI/RUC</th>
+                                <th>ESTADO</th>
+                                <th></th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let item of listaClientes">
+                                  <td>
+                                      {{item.cia}}
+                                  </td>
+                                  <td>
+                                    {{item.id}}
+                                </td>
+                                <td>
+                                    {{item.nombre}}
+                                </td>
+                            
+                                <td>
+                                    {{item.ci}}
+                                </td>
+                                <td>
+                                    {{item.estado}}
+                                </td>
+                                <td>
+                                    <button class="btn btn-info" title="EDICION" data-toggle="modal" data-target=".bd-example-modal-xl">
+                                        <i class="fa fa-address-card" aria-hidden="true"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-sm" title="ELIMINAR">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </button>
+                                </td>
+                    
+                              </tr>
+                            </tbody>
+                          </table>
+                    
+                    </div>
+                    </div>
+                </div>
+
+             </nb-card-body>
+
+        </nb-card>
     </div>
-    </div>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
     
     
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
     
@@ -95,76 +138,129 @@
            
     <!--CUERPO MODAL-->
     
-    <div class="card text-black mb-3" style="max-width: 1000px;">
-        <div class="card-header text-white bg-danger">GESTION DE PROVEEDORES</div>
+    <div class="card text-black mb-3" style="max-width: 1200px;">
+        <div class="card-header text-white bg-primary">GESTION DE PROVEEDORES</div>
         <div class="card-body">
-        
-            <div class="form-row my-2">
-                <div class="col-md-4">
-                    <label for="inputEmail">Nombre Proveedor</label> <br>
-                    <label for="inputEmail">UNITED PARCEL SERVICE  CO</label>
-                </div>
-               <div class="col-md-4">
-                    <label for="inputEmail">Tipo documento</label>
-                    <select class="form-control" >
-                        <option *ngFor="let doc of lstDocs" 
-                        [value]="doc.codigo">{{doc.valor}}</option>
-                      </select>
-                </div>
-
-                <div class="col-md-4">
-                    <label for="inputEmail">Documento</label>
-                    <input type="text" class="form-control">
-                </div>
-
-            </div>
+            <fieldset class="border p-2 scheduler-border fondo_verde">
+                <legend class="w-auto scheduler-border"><b class="title">Datos del Proveedor</b></legend>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4 form-group">
+                            <label class="col-12">Nombre Proveedor</label> <br>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><i
+                                          class="fa fa-user"></i></span>
+                                 </div>
     
-            <div class="form-row my-2">
-                <div class="col-md-4">
-                    <label for="inputEmail">Dirección</label>
-                    <textarea class="form-control" rows="4" id="comment"></textarea>
-                </div>
-    
-                <div class="col-md-4">
-                    <label for="inputEmail">Telefono</label>
-                    <input type="text" class="form-control">
-                </div>
-                
-                <div class="col-md-4">
-                    <label for="inputEmail">Correo</label>
-                    <input type="text" class="form-control">
-                </div>
+                                 <input type="text" class="form-control" disabled value="UNITED PARCEL SERVICE  CO">
+                            </div>
+                        </div>
 
+                        <div class="col-sm-12 col-md-4 form-group">
+                            <label for="inputEmail">Tipo documento</label>
+                            <select class="form-control" >
+                                <option *ngFor="let doc of lstDocs" 
+                                [value]="doc.codigo">{{doc.valor}}</option>
+                              </select>
+                        </div>
+                        
+                        <div class="col-sm-12 col-md-4 form-group">
+                            <label class="col-12">Documento</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><i
+                                          class="fa fa-user"></i></span>
+                                 </div>
     
-            </div>
-            <div class="form-row my-2">
-                <div class="col-md-4">
-                    <label for="inputEmail">Correos Adicionales (separar por ;)</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-md-4 my-3">
-                    <label for="inputEmail">Estado:</label>
-                    <div class="form-check-inline">
-                        <label class="form-check-label">
-                          <input type="radio" class="form-check-input" name="optradio">ACTIVO
-                        </label>
-                      </div>
+                                 <input type="text" class="form-control">
+                            </div>
+                            
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 form-group">
+                            <label class="col-12">Dirección</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><i
+                                          class="fa fa-user"></i></span>
+                                 </div>
     
-                      <div class="form-check-inline">
-                        <label class="form-check-label">
-                          <input type="radio" class="form-check-input" name="optradio">INACTIVO
-                        </label>
-                      </div>
-                      
-                </div>
+                                 <textarea class="form-control" rows="2" id="comment"></textarea>
+                            </div>
+                           
+                        </div>
 
-            </div>
+                        <div class="col-sm-12 col-md-2 form-group">
+                            <label class="col-12">Telefono</label>
 
-            <div class="form-row ">
-                <div class="col-md-4 my-4">
-                    <button type="button" class="btn btn-danger">GUARDAR</button>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><i
+                                          class="fa fa-user"></i></span>
+                                 </div>
+    
+                                 <input type="text" class="form-control">
+                            </div>
+
+                          
+                        </div>
+
+                        <div class="col-sm-12 col-md-4 form-group">
+                            <label for="inputEmail">Correo</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><i
+                                          class="fa fa-user"></i></span>
+                                 </div>
+    
+                                 <input type="text" class="form-control">
+                            </div>
+
+                            
+                        </div>
+
+                        <div class="col-sm-12 col-md-4 form-group">
+                            <label for="inputEmail">Correos Adicionales (separar por ;)</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><i
+                                          class="fa fa-user"></i></span>
+                                 </div>
+    
+                                 <input type="text" class="form-control">
+                            </div>
+                           
+                        </div>
+
+                        <div class="col-sm-12 col-md-4 form-group my-4">
+                            <label for="inputEmail">Estado:</label>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                  <input type="radio" class="form-check-input" name="optradio">ACTIVO
+                                </label>
+                              </div>
+            
+                              <div class="form-check-inline">
+                                <label class="form-check-label">
+                                  <input type="radio" class="form-check-input" name="optradio">INACTIVO
+                                </label>
+                              </div>
+                              
+                        </div>
+
+                        <div class="col-sm-12 col-md-4 form-group my-2">
+                           
+                                <button type="button" class="btn btn-info">GUARDAR</button>
+                            
+                        </div>
+
+                    </div>
                 </div>
-            </div>
+            </fieldset>
+
+
+
 
 
     
@@ -188,8 +284,8 @@
                   
                   <h3 class="card-title">CONFIRMACION</h3>
                   <p class="card-text">¿Esta seguro? Se eliminara toda la informacion relacionada</p>
-                  <a href="#" class="btn btn-primary text-white">SI</a>
-                  <a href="#" class="btn btn-primary text-white">NO</a>
+                  <a  class="btn btn-primary text-white">SI</a>
+                  <a  class="btn btn-primary text-white my-2">NO</a>
                
               </div>
               </div>
