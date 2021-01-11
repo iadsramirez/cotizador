@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginsService } from '../servicios/logins.service';
+import { ClienteService } from '../servicios/cliente.service';
 
 @Component({
   selector: 'ngx-cliente',
@@ -12,11 +13,21 @@ export class ClienteComponent implements OnInit {
   ci:'0100905538',estado:'ACTIVO'}];
   lstDocs:any=[{codigo:1,valor:'CI'},{codigo:2,valor:'PASAPORTE'}];
   listaTpCliente:any=[{codigo:1,valor:'JUAN MANUEL SANTOS'},{codigo:2,valor:'MARIA LORENA FUENTE'}];
-  constructor(private servicio:LoginsService) { 
+  constructor(private servicio:LoginsService,private clienteService:ClienteService) { 
     this.servicio.logeado=true;
   }
 
   ngOnInit(): void {
   }
+
+
+
+
+guardarCliente(){
+  
+}
+
+
+
 
 }

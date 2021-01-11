@@ -13,6 +13,7 @@ import { DatoscliComponent } from './datoscli/datoscli.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { ProveedorComponent } from './proveedor/proveedor.component';
 import { ProductoComponent } from './producto/producto.component';
+import {HttpClientModule} from '@angular/common/http';
 
 import {
   NbButtonModule,
@@ -31,7 +32,7 @@ import {
 
 
 @NgModule({
-  imports: [NbCardModule,ReactiveFormsModule,
+  imports: [HttpClientModule,NbCardModule,ReactiveFormsModule,
     PagesRoutingModule,
     ThemeModule,
     NbMenuModule,
