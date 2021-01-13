@@ -11,4 +11,6 @@
 export const environment = {
   production: false,
   baseUrl: 'http://localhost:8445/crm/resources/clientes/',
+  baseUrlProveedor: 'http://localhost:8445/crm/resources/proveedor/',
+
 };

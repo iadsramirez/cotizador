@@ -23,9 +23,10 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 
+
 @NgModule({
   declarations: [AppComponent],
-  imports: [ 
+  imports: [NbToastrModule.forRoot(),
     ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,

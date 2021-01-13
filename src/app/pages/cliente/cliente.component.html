@@ -1,3 +1,5 @@
+<ngx-spinner></ngx-spinner>
+
 <div class="steppers-container row">
     <div class="col-md-12">
         <nb-card> 
@@ -12,7 +14,7 @@
                     <div class="row">
                     
                     <div class="col-md-4">
-                    <button type="button" class="btn btn-info">
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#agregarCliente">
                         Agregar
                     </button>
                     </div>
@@ -47,10 +49,10 @@
                             <tbody>
                               <tr *ngFor="let item of listaClientes">
                                   <td>
-                                      {{item.id}}
+                                      {{item.clientePK.idCliente}}
                                   </td>
                                   <td>
-                                    {{item.nombre}}
+                                    {{item.nombreCliente}}
                                 </td>
                                 <td>
                                     {{item.ci}}
@@ -60,12 +62,12 @@
                                     {{item.estado}}
                                 </td>
                                 <td>
-                                    <button class="btn btn-info" title="EDICION" data-toggle="modal" data-target=".bd-example-modal-xl">
+                                    <button class="btn btn-info" title="EDICION" data-toggle="modal" data-target="#editarCliente">
                                         <i class="fa fa-address-card" aria-hidden="true"></i>
                                     </button>
                                 </td>
                                 <td>
-                                    <button class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-sm" title="ELIMINAR">
+                                    <button (click)="eliminarCliente(item)" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-sm" title="ELIMINAR">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </button>
                                 </td>
@@ -102,7 +104,176 @@
 <!---modales-->
 
 
-<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+
+
+
+
+<div class="modal fade bd-example-modal-xl" id="agregarCliente" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+       
+<!--CUERPO MODAL-->
+
+<div class="card text-black mb-3" style="max-width: 1200px;">
+    <div class="card-header text-white bg-primary">GESTION DE TERCEROS CLIENTES</div>
+    <div class="card-body">
+    <form  [formGroup]="clienteForm" >
+        <fieldset class="border p-2 scheduler-border fondo_verde">
+            <legend class="w-auto scheduler-border"><b class="title">Datos del cliente</b></legend>
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-sm-12 col-md-4 form-group">
+                        <label class="col-12">Nombre</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i
+                                      class="fa fa-user"></i></span>
+                             </div>
+
+                             <input type="text" formControlName="nombre" class="form-control">
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-sm-12 col-md-4 form-group">
+                        <label class="col-12">Razón Social</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i
+                                      class="fa fa-user"></i></span>
+                             </div>
+
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4 form-group">
+                        <label class="col-12">Tipo documento</label>
+                        <select class="form-control" >
+                            <option *ngFor="let doc of lstDocs" 
+                            [value]="doc.codigo">{{doc.valor}}</option>
+                          </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4 form-group">
+                        <label class="col-12">Documento</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i
+                                      class="fa fa-user"></i></span>
+                             </div>
+
+                             <input type="text"  mask="00000000-0" class="form-control" formControlName="ruc" >
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 form-group">
+                        <label class="col-12">Dirección</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i
+                                      class="fa fa-user"></i></span>
+                             </div>
+
+                             <textarea class="form-control" rows="2"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-2 form-group">
+                        <label class="col-12">Telefono</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i
+                                      class="fa fa-user"></i></span>
+                             </div>
+
+                             <input type="text" formControlName="telefono" mask="0000-0000"  class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4 form-group">
+                        <label for="inputEmail">Celular</label>
+                        <div class="input-group mb-3">
+
+                            <div class="input-group-prepend">
+                               <span class="input-group-text" id="basic-addon1"><i
+                                     class="fa fa-user"></i></span>
+                            </div>
+                            <input type="text" formControlName="celular" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4 form-group">
+                        <label class="col-12">Correo</label>
+                        <div class="input-group mb-3">
+
+                            <div class="input-group-prepend">
+                               <span class="input-group-text" id="basic-addon1"><i
+                                     class="fa fa-user"></i></span>
+                            </div>
+                            <input type="text" class="form-control">
+                         </div>
+                        
+                    </div>
+                    <div class="col-sm-12 col-md-4 form-group">
+                        <label class="col-12">Correos Adicionales (separar por ;)</label>
+                        <div class="input-group mb-3">
+
+                            <div class="input-group-prepend">
+                               <span class="input-group-text" id="basic-addon1"><i
+                                     class="fa fa-user"></i></span>
+                            </div>
+                            <input type="text" class="form-control">
+                         </div>
+                        
+                    </div>    
+                    <div class="col-sm-12 col-md-4 form-group">
+                        <label for="inputEmail">Tipo Cliente</label>
+                        <select class="form-control" formControlName="idTipoCliente">
+                            <option *ngFor="let doc of listaTpCliente" 
+                            [value]="doc.codigo">{{doc.valor}}</option>
+                          </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4 form-group">
+                        <label class="col-12">Estado</label>
+                        <div class="form-check-inline my-2">
+                            <label class="form-check-label">
+                              <input type="radio" class="form-check-input" name="optradio">ACTIVO
+                            </label>
+                          </div>
+        
+                          <div class="form-check-inline">
+                            <label class="form-check-label">
+                              <input type="radio" class="form-check-input" name="optradio">INACTIVO
+                            </label>
+                          </div>
+                          
+                    </div>
+
+                    <div class="col-sm-12 col-md-4 form-group my-2">
+                        <button type="button" (click)="guardarCliente()" class="btn btn-circle btn-info"><i class="fa fa-file-code-o" aria-hidden="true"></i>&nbsp;GUARDAR</button>
+                    </div>
+
+                </div>
+            </div>
+        </fieldset>
+    </form>
+        
+        
+
+
+  <!--FIN </form> MODAL-->    
+    </div>
+  </div>
+
+
+<!--FIN CUERPO MODAL-->
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="modal fade bd-example-modal-xl" id="editarCliente" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
        
@@ -271,8 +442,8 @@
               
               <h3 class="card-title">CONFIRMACION</h3>
               <p class="card-text">¿Esta seguro? Se eliminara toda la informacion relacionada</p>
-              <a  class="btn btn-primary text-white">SI</a>
-              <a  class="btn btn-primary text-white my-2">NO</a>
+              <button  class="btn btn-primary text-white" (click)="confirmaEliminarCliente()" data-dismiss="modal" data-target=".bd-example-modal-sm">SI</button>
+              <button  class="btn btn-primary text-white my-2">NO</button>
            
           </div>
           </div>

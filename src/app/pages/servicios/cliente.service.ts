@@ -14,11 +14,7 @@ export class ClienteService {
   constructor(private http: HttpClient) { }
 
   guardarCliente(cliente:any){
-    return this.http.post(environment.baseUrl+'saveCliente',cliente)
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    );
+    return this.http.post(environment.baseUrl+'saveCliente',cliente);
   }
 
 
@@ -32,11 +28,7 @@ export class ClienteService {
 
 
   eliminarCliente(objeto:any): Observable<any> {
-    return this.http.post(environment.baseUrl+'deleteCliente',objeto)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      );
+    return this.http.post(environment.baseUrl+'deleteCliente',objeto);
   }
 
 

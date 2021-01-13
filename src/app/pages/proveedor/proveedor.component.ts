@@ -19,4 +19,12 @@ export class ProveedorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+
+  guardarProveedor(){
+    
+  }
+
+
+
 }

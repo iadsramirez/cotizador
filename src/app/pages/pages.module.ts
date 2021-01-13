@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NbMenuModule } from '@nebular/theme';
+import { NbMenuModule, NbToastrModule } from '@nebular/theme';
 
 import { ThemeModule } from '../@theme/theme.module';
 import { PagesComponent } from './pages.component';
@@ -30,9 +30,15 @@ import {
   NbRadioModule
 } from '@nebular/theme';
 
+import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
 
 @NgModule({
-  imports: [HttpClientModule,NbCardModule,ReactiveFormsModule,
+  imports: [NgxMaskModule.forRoot(maskConfig),NgxSpinnerModule,HttpClientModule,NbCardModule,ReactiveFormsModule,
     PagesRoutingModule,
     ThemeModule,
     NbMenuModule,
